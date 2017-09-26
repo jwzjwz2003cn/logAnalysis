@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # Log Analysis Program
 
@@ -14,9 +15,8 @@ def displayMostPopularArticles():
     """
     print "What are the most popular three articles of all time?"
     articles = get_top_three_articles()
-    for a in articles:
-        if a is not None:
-            print " \"{}\" - {} views".format(a[0], a[1])
+    for title, views in articles:
+        print " \"{}\" - {} views".format(title, views)
     print "\n"
 
 
@@ -28,9 +28,8 @@ def displayMostPopularAuthors():
     """
     print "Who are the most popular article authors of all time?"
     authors = get_top_authors()
-    for a in authors:
-        if a is not None:
-            print " {} - {} views".format(a[0], a[1])
+    for author, views in authors:
+        print " {} - {} views".format(author, views)
     print "\n"
 
 
@@ -43,9 +42,7 @@ def displayDaysOfOnePercentError():
     dates = get_high_http_error_date()
     for d in dates:
         if d is not None:
-            date = d[3]
-            print " \"{}\" - {:0.1f}%"" errors".format(
-                date.strftime("%B %d, %Y"), d[2])
+            print('{0:%B %d, %Y} - {1:.1f}% errors'.format(d[3], d[2]))
     print "\n"
 
 if __name__ == '__main__':
